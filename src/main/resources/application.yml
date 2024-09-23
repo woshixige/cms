@@ -1,0 +1,73 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cms
+    password: 1234
+    username: root
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher  #解决swagger 启动 空指针错误
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #全局时间配置
+    time-zone: GMT+8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    jedis:
+      pool:
+        enabled: true
+        max-active: 8
+        max-wait: 1ms
+        max-idle: 4
+        min-idle: 0
+
+swagger:
+  enabled: true   #开启swagger
+  base-package: com.briup.cms.web.controller   #扫描注解的包，生成API文档
+  title: 看点咨询系统
+  contact:
+    email: zzx@briup.com
+    name: zzx
+    url: www.briup.com
+  description: 这是一个ssm项目
+  authorization:
+    key-name: token # 认证的请求参数名，swagger ui 默认是大写的
+    auth-regex: ^(?!\/login$).+  #除了匹配/login外的任意字符串
+
+oss:
+  accessKey: byqk2cRm3JcXk2ixy1khme2cQsM_nn2PZly2b8y_
+  secretKey: 6L9KcM_ePlvIYQ5FmEKx5DBm3TdtBWLIbN3GxMqX
+  bucket: product-source-666
+  url: http://sivcfw1fy.hn-bkt.clouddn.com/
+
+#配置文件上传保存的服务器目录
+upload:
+  filePath: C:\Users\zzx\Desktop\imgs\   #文件上传保存目录
+  serverPath: http://localhost:8000/imgs/  #访问图片服务器路径
+# 配置文件上传和下载配置信息
+file:
+  upload:
+    dir: C:\Users\zzx\Desktop\imgs\  #保存目录
+    ip: 127.0.0.1   #图片服务器地址
+    port: 8000      #图片服务器端口号
+    url: /imgs    #图片服务器访问url
+  download: 文件下载（暂定）
+#二维码访问资源的地址（后端json 前端页面） localhost:8081
+QRcode:
+  host: http://fhme53.natappfree.cc/
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #sql日志
+    map-underscore-to-camel-case: true #开启驼峰命名
+  mapper-locations: classpath*:/mapper/**/*.xml #映射路径
+  type-aliases-package: com.briup.cms.bean #别名
+  global-config:
+    banner: false #关闭运行mybatisplus的logo显示
+    db-config:
+      logic-delete-field: deleted #字段名称
+      logic-delete-value: 1 #表示已删除
+      logic-not-delete-value: 0 #表示未删除

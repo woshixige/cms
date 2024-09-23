@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.cms.mapper.basic.ArticleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.briup.cms.bean.basic.Article">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="status" property="status" />
+        <result column="read_num" property="readNum" />
+        <result column="like_num" property="likeNum" />
+        <result column="dislike_num" property="dislikeNum" />
+        <result column="user_id" property="userId" />
+        <result column="category_id" property="categoryId" />
+        <result column="charged" property="charged" />
+        <result column="deleted" property="deleted" />
+        <result column="publish_time" property="publishTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, content, status, read_num, like_num, dislike_num, user_id, category_id, charged, deleted, publish_time
+    </sql>
+
+</mapper>
